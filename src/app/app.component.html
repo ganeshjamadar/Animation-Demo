@@ -1,49 +1,43 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <button class="btn btn-primary" type="button" (click)="onAnimate()">Animate!</button>
-      &nbsp;
-      &nbsp;
-      <button class="btn btn-primary" type="button" (click)="onShrink()">Shrink!</button>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-primary" type="button" (click)="onAnimate()">Animate!</button> &nbsp; &nbsp;
+            <button class="btn btn-primary" type="button" (click)="onShrink()">Shrink!</button>
+        </div>
+        <div class="col-md-4">
+            <div style="height: 150px; width: 100px;" [@divState]="state" (@divState.start)="animationStarted($event)" (@divState.done)="animationEnded($event)">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div style="height: 150px; width: 100px;" [@wildState]="wildState">
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-      <div style="height: 150px; width: 100px;" [@divState]="state" 
-      (@divState.start)="animationStarted($event)"
-      (@divState.done)="animationEnded($event)"
-      >
-      </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" id="itemname" #itemname> &nbsp;
+            <button class="btn btn-success" type="button" (click)="onAddItem(itemname.value)">Add Item!</button>
+        </div>
     </div>
-    <div class="col-md-4">
-      <div style="height: 150px; width: 100px;" [@wildState]="wildState">
-      </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of items" (click)="onDeleteItem(item)" [@list1]>
+                    {{item}}
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <input type="text" id="itemname" #itemname>
-      &nbsp;
-      <button class="btn btn-success" type="button" (click)="onAddItem(itemname.value)">Add Item!</button>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of items" (click)="onDeleteItem(item)" [@list2]>
+                    {{item}}
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of items" (click)="onDeleteItem(item)" [@list1]>
-          {{item}}
-        </li>
-      </ul>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of items" (click)="onDeleteItem(item)" [@list2]>
-          {{item}}
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>

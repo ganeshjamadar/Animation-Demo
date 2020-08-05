@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { 
-  trigger, 
+import {
+  trigger,
   state,
   style,
   transition,
   animate,
   keyframes,
   group
- } from '@angular/animations';
+} from '@angular/animations';
 import { UrlHandlingStrategy } from '@angular/router';
 
 
@@ -19,13 +19,13 @@ import { UrlHandlingStrategy } from '@angular/router';
     trigger('divState', [
       state('normal', style(
         {
-          'background' : 'url(../assets/kajal-agarwal1.jpg)',
+          'background': 'url(../assets/kajal-agarwal1.jpg)',
           transform: 'translateX(0px)'
         }
       )),
-      state('highlighted',style(
+      state('highlighted', style(
         {
-          'background' : 'url(../assets/images1.jpg)',
+          'background': 'url(../assets/images1.jpg)',
           transform: 'translateX(200px)'
         }
       )),
@@ -35,26 +35,26 @@ import { UrlHandlingStrategy } from '@angular/router';
     trigger('wildState', [
       state('normal', style(
         {
-          'background' : 'url(../assets/kajal-agarwal1.jpg)',
+          'background': 'url(../assets/kajal-agarwal1.jpg)',
           transform: 'translateX(0px) scale(1)'
         }
       )),
-      state('highlighted',style(
+      state('highlighted', style(
         {
-          'background' : 'url(../assets/images1.jpg)',
+          'background': 'url(../assets/images1.jpg)',
           transform: 'translateX(200px) scale(1)'
         }
       )),
-      state('shrunken',style(
+      state('shrunken', style(
         {
-          'background' : 'url(../assets/images1.jpg)',
+          'background': 'url(../assets/images1.jpg)',
           transform: 'translateX(0px) scale(0.5)'
         }
       )),
       transition('normal => highlighted', animate(3000)),
       transition('highlighted => normal', animate(6000)),
-      transition('shrunken <=> *',group([
-        animate(300,style({
+      transition('shrunken <=> *', group([
+        animate(300, style({
           borderRadius: '50px'
         })),
         animate(2000)
@@ -76,7 +76,7 @@ import { UrlHandlingStrategy } from '@angular/router';
         animate(500)
       ]),
       transition('* => void', [
-        animate(500,style({
+        animate(500, style({
           opacity: 0,
           transform: 'translateX(100px)'
         }))
@@ -115,10 +115,10 @@ import { UrlHandlingStrategy } from '@angular/router';
       ]),
       transition('* => void', [
         group([
-          animate(300,style({
+          animate(300, style({
             color: 'red'
           })),
-          animate(800,style({
+          animate(800, style({
             opacity: 0,
             transform: 'translateX(100px)'
           }))
@@ -126,37 +126,34 @@ import { UrlHandlingStrategy } from '@angular/router';
       ])
     ])
   ]
-}) 
+})
 export class AppComponent {
   state = 'normal';
   wildState = 'normal';
-  items= ['milk', 'bread', 'tea', 'coffee'];
+  items = ['milk', 'bread', 'tea', 'coffee'];
 
-  onAnimate(){
+  onAnimate() {
     this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal'
     this.wildState == 'normal' ? this.wildState = 'highlighted' : this.wildState = 'normal'
   }
 
-  onShrink(){
+  onShrink() {
     this.wildState = 'shrunken';
   }
-  onAddItem(item){
-    if(item != "")
+  onAddItem(item) {
+    if (item != "")
       this.items.push(item);
   }
 
-  onDeleteItem(item)
-  {
+  onDeleteItem(item) {
     this.items.splice(this.items.indexOf(item), 1);
   }
 
-  animationStarted(event)
-  {
+  animationStarted(event) {
     console.log(event);
   }
 
-  animationEnded(event)
-  {
+  animationEnded(event) {
     console.log(event);
   }
 
