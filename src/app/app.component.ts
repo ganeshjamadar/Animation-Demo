@@ -53,16 +53,12 @@ import { UrlHandlingStrategy } from '@angular/router';
       )),
       transition('normal => highlighted', animate(3000)),
       transition('highlighted => normal', animate(6000)),
-      transition('shrunken <=> *',[
-        style({
-            'background' : 'url(../assets/images1.jpg)',
-          }),
-        animate(1000,
-            style({
-              borderRadius : '50px'
-            })),
-        animate(1000)
-      ] 
+      transition('shrunken <=> *',group([
+        animate(300,style({
+          borderRadius: '50px'
+        })),
+        animate(2000)
+      ])
       ),
     ]),
     trigger('list1', [
